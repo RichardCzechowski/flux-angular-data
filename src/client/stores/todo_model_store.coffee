@@ -31,7 +31,7 @@ m.factory 'TodoModelStore', (
 
     # Performs any initialization needed for this store.  For stores which keep information in instance
     # variables, this is the place to set them up to represent an "empty" state.  For stores which listen to
-    # other stores, this is the place to register those listners and define their actions.
+    # other stores, this is the place to register those listeners and define their actions.
     #
     # It so happens that this store listens to itself.  If ever it detects that it doesn't have an "empty"
     # todo item waiting for the user to fill in, it will create a new one.  Since the UI doesn't have an

@@ -7,3 +7,4 @@ m = module.exports = angular.module 'models', ['dataflux']
 
 require './model_proxy'
 require './todo_model'
+require './drag_model'

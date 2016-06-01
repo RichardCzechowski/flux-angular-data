@@ -6,3 +6,4 @@
 m = module.exports = angular.module 'stores', ['dataflux', 'models']
 
 require './todo_model_store'
+require './drag_model_store'

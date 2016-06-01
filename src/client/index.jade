@@ -8,9 +8,9 @@ html(ng-app="app")
         title Dataflux Todos
         link(rel="stylesheet" type="text/css" href="/main.css")
 
-    body
+    body(drag_container)
         .content
-            todo-list
+          drag_element(ng-repeat="element in [1,2,3,4,5]")
 
         script(src="/external.js")
         script(src="/internal.js")

@@ -1,5 +1,5 @@
 drag_element{
-  position: absolute;
+  display: block;
   width: 100px;
   height: 100px;
   border: 1px solid black;
@@ -9,6 +9,9 @@ drag_element{
     height: 100%;
   }
   &.selected{
+    width: 100px;
+    height: 100px;
+    position: absolute;
     background-color: red;
   }
 }

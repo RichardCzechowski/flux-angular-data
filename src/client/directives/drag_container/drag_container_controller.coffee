@@ -3,10 +3,28 @@ m = angular.module("directives.drag_container")
 m.controller "DragContainerController", (
     $scope
     DatafluxEvent
-    DragModelActions
-    DragModelStore
+    CurrentElementModelActions
+    CurrentElementModelStore
+    ElementsModelActions
+    ElementsModelStore
   )->
 
-    $scope.deselect = (even) ->
+    for i in [1..5]
+      ElementsModelActions.create()
+
+    ElementsModelStore.$listen (event, id) ->
+      return unless event is DatafluxEvent.change
+      $scope.elements = ElementsModelStore.getAll()
+
+    CurrentElementModelStore.$listen (event, id) ->
+      return unless event is DatafluxEvent.change
+      $scope.currentElement = CurrentElementModelStore.get()
+
+    CurrentElementModelStore.get()
+
+    $scope.deselect = (event) ->
       console.log "deselected", "replace with current model"
-      DragModelActions.deselect($scope.modelId, event)
+      CurrentElementModelActions.delete($scope.currentElement)
+
+    $scope.isSelected = (id) ->
+      CurrentElementModelStore.get() == id

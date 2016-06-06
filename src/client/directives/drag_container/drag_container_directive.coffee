@@ -2,8 +2,9 @@ m = angular.module("directives.drag_container")
 
 m.directive "dragContainer", ->
   controller: "DragContainerController"
-  restrict: "A"
+  restrict: "E"
   scope: {}
+  template: templates["directives/drag_container"]
   link: (scope, $el) ->
     $el.on("mouseup", (event) ->
       scope.deselect()

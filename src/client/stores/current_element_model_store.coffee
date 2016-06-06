@@ -1,7 +1,7 @@
 m = angular.module 'stores'
 
 m.factory "CurrentElementModelActions", (Reflux)->
-  actions = Reflux.createActions ['set']
+  actions = Reflux.createActions ['set', 'delete']
   actions = Reflux.logActions 'CurrentElementModelActions', actions
   return actions
 
@@ -10,6 +10,7 @@ m.factory 'CurrentElementModelStore', (
   DatafluxEvent
   CurrentElementModel
   CurrentElementModelActions
+  ElementsModelStore
   Reflux
 )->
 
@@ -22,16 +23,13 @@ m.factory 'CurrentElementModelStore', (
 
     # Public Methods
     get: ->
-      return CurrentElementModel.getAll()?[0]?.toProxy() or null
+      return @_current_element or null
 
     # Action Methods ᕙ༼ຈل͜ຈ༽ᕗ
-    onSet: (id)->
-      # proxy = '{"id": id}'
-      # console.log("SETTTING", id)
-      # CurrentElementModel.update proxy
-      #   .then (model)=>
-      #     console.log "updated ", model
-      #     @trigger DatafluxEvent.update, model.id
-      #     @trigger DatafluxEvent.change
-      #   .catch (error)->
-      #     console.error "Could not update: ", error
+    onSet: (id) ->
+      @_current_element = id
+      @trigger DatafluxEvent.change, id
+
+    onDelete: () ->
+      @_current_element = null
+      @trigger DatafluxEvent.change

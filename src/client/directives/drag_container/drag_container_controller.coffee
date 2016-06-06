@@ -23,7 +23,6 @@ m.controller "DragContainerController", (
     CurrentElementModelStore.get()
 
     $scope.deselect = (event) ->
-      console.log "deselected", "replace with current model"
       CurrentElementModelActions.delete($scope.currentElement)
 
     $scope.isSelected = (id) ->

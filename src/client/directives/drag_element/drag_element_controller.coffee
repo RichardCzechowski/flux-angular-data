@@ -12,8 +12,6 @@ m.controller "DragElementController", (
       return unless event is DatafluxEvent.change
       return unless id == $scope.id
       $scope.element = ElementsModelStore.get(id)
-      console.log "getting element", id
 
     $scope.select = ->
-      console.log "selected", $scope.id
       CurrentElementModelActions.set($scope.id)

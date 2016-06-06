@@ -14,4 +14,4 @@ m.factory 'DragModel', (
       toProxy: ->
         return new ModelProxy this
 
-m.run (TodoModel)-> # force model to load
+m.run (DragModel)-> # force model to load

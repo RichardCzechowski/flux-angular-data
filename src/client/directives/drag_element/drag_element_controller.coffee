@@ -3,10 +3,14 @@ m = angular.module("directives.drag_element")
 m.controller "DragElementController", (
     $scope
     DatafluxEvent
-    DragModelActions
-    DragModelStore
+    CurrentElementModelActions
+    CurrentElementModelStore
   )->
+    $scope.modelId = 42 #Test model id
 
-    $scope.select = (even) ->
+    $scope.select = ->
       console.log "selected", $scope.modelId
-      DragModelActions.select($scope.modelId, event)
+      CurrentElementModelActions.set($scope.modelId)
+
+    $scope.isSelected = ->
+      $scope.modelId == CurrentElementModelStore.get()

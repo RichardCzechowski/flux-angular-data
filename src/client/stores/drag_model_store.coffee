@@ -1,8 +1,7 @@
-
-m = angular.module 'stores', []
+m = angular.module 'stores'
 
 m.factory "DragModelActions", (Reflux)->
-  actions = Reflux.createActions ['select', 'deselect']
+  actions = Reflux.createActions ['create', 'select', 'deselect']
   actions = Reflux.logActions 'DragModelActions', actions
   return actions
 
@@ -16,6 +15,11 @@ m.factory 'DragModelStore', (
 
   Reflux.createStore
 
+    init: ->
+      @listen (event, id)=>
+        return unless event is DatafluxEvent.change
+         @onCreate()
+
     listenables: DragModelActions
 
     # Public Methods
@@ -26,6 +30,13 @@ m.factory 'DragModelStore', (
       return DragModel.get(id)?.toProxy() or null
 
     # Action Methods ᕙ༼ຈل͜ຈ༽ᕗ
+    onCreate: () ->
+      DragModel.create()
+        .then (model)->
+          console.log model
+        .catch (error)->
+          console.log 'fail'
+
     onSelect: (id) ->
 
     onDeselect: (id) ->

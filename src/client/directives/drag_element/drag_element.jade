@@ -1,2 +1,2 @@
-div(ng-mousedown="select($event)")
+div(ng-mousedown="select($event)" ng-class="{selected: isSelected()}")
   p "element" {{element}}

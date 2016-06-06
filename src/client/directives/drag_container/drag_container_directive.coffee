@@ -14,4 +14,6 @@ m.directive "dragContainer", ->
       # if there is a currently selected element
       # then record position of mouse
       # console.log event.pageX, event.pageY
+      if scope.currentElement
+        scope.setElementPosition(event)
     )

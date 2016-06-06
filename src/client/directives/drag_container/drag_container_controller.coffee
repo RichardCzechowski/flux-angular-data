@@ -28,3 +28,10 @@ m.controller "DragContainerController", (
 
     $scope.isSelected = (id) ->
       CurrentElementModelStore.get() == id
+
+    $scope.setElementPosition = (event) ->
+      proxy = ElementsModelStore.get($scope.currentElement)
+      proxy.xPos = event.pageX
+      proxy.yPos = event.pageY
+      ElementsModelActions.update(proxy)
+

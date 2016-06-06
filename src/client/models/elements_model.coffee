@@ -11,6 +11,8 @@ m.factory 'ElementsModel', (
 
     fields: [
       'id'
+      'xPos'
+      'yPos'
     ]
 
     methods:

@@ -9,8 +9,9 @@ m.controller "DragContainerController", (
     ElementsModelStore
   )->
 
-    for i in [1..5]
-      ElementsModelActions.create()
+    # Hack to create some elements
+    # for i in [1..5]
+    #   ElementsModelActions.create()
 
     ElementsModelStore.$listen (event, id) ->
       return unless event is DatafluxEvent.change
@@ -30,6 +31,7 @@ m.controller "DragContainerController", (
 
     $scope.setElementPosition = (event) ->
       proxy = ElementsModelStore.get($scope.currentElement)
+      return unless proxy?
       proxy.xPos = event.pageX
       proxy.yPos = event.pageY
       ElementsModelActions.update(proxy)

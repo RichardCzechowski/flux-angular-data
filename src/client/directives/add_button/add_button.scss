@@ -1,0 +1,12 @@
+add_button {
+  width: 100px;
+  height: 100px;
+  border: 1px dotted green;
+  position: absolute;
+  bottom: 0px;
+  left: 100px;
+  p {
+    line-height: 100px;
+    text-align: center;
+  }
+}

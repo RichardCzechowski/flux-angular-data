@@ -1,0 +1,12 @@
+trash{
+  width: 100px;
+  height: 100px;
+  border: 1px dotted blue;
+  position: absolute;
+  bottom: 0px;
+  right: 100px;
+  p {
+    line-height: 100px;
+    text-align: center;
+  }
+}

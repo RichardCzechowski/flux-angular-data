@@ -6,10 +6,12 @@ m.factory 'ElementsModelActions', (Reflux)->
   return actions
 
 m.factory 'ElementsModelStore', (
+  CurrentElementModelActions
+  CurrentElementModelStore
   DatafluxEvent
   ElementsModel
-  Reflux
   ElementsModelActions
+  Reflux
 )->
 
   Reflux.createStore
@@ -43,6 +45,10 @@ m.factory 'ElementsModelStore', (
           console.error "Could not create: ", error
 
     onDelete: (id)->
+      currentElement = CurrentElementModelStore.get()
+      if currentElement == id
+        CurrentElementModelActions.delete()
+
       ElementsModel.destroy id
         .then =>
           console.log "deleted #{id}"

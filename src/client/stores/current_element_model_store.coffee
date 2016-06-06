@@ -10,7 +10,6 @@ m.factory 'CurrentElementModelStore', (
   DatafluxEvent
   CurrentElementModel
   CurrentElementModelActions
-  ElementsModelStore
   Reflux
 )->
 

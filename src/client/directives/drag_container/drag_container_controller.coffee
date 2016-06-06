@@ -9,10 +9,6 @@ m.controller "DragContainerController", (
     ElementsModelStore
   )->
 
-    # Hack to create some elements
-    # for i in [1..5]
-    #   ElementsModelActions.create()
-
     ElementsModelStore.$listen (event, id) ->
       return unless event is DatafluxEvent.change
       $scope.elements = ElementsModelStore.getAll()
@@ -24,6 +20,8 @@ m.controller "DragContainerController", (
     CurrentElementModelStore.get()
 
     $scope.deselect = (event) ->
+      if helpers.collision($("##{$scope.currentElement}"), $("trash"))
+        ElementsModelActions.delete($scope.currentElement)
       CurrentElementModelActions.delete($scope.currentElement)
 
     $scope.isSelected = (id) ->

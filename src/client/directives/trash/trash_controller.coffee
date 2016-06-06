@@ -11,4 +11,4 @@ m.controller "TrashController", (
       $scope.currentElement = CurrentElementModelStore.get()
 
     $scope.deleteElement = (id) ->
-      ElementsModelActions.delete(id)
+      # ElementsModelActions.delete(id)

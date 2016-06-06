@@ -15,6 +15,7 @@ global.angular   = require 'angular'
 global.reflux    = require 'reflux-core'
 global.templates = require './templates'
 global._         = require '../underscore'
+global.helpers   = require './helpers'
 
 global.JSData                = require 'js-data'
 global.DSLocalStorageAdapter = require 'js-data-localstorage'

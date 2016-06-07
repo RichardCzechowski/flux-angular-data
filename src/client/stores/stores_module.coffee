@@ -5,4 +5,5 @@
 
 m = module.exports = angular.module 'stores', ['dataflux', 'models']
 
-require './todo_model_store'
+require './elements_model_store'
+require './current_element_model_store'
